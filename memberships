@@ -1,0 +1,1 @@
+curl -X GET -H "X-TrackerToken: $TOKEN" "https://www.pivotaltracker.com/services/v5/accounts/${ACCOUNT_ID}/memberships"

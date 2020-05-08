@@ -1,0 +1,1 @@
+curl -s -X GET -H "X-TrackerToken: $TOKEN" "https://www.pivotaltracker.com/services/v5/projects"

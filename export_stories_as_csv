@@ -1,0 +1,7 @@
+rm -f export.csv
+./stories_to_csv 2440161 >> export.csv
+./stories_to_csv 2439853 >> export.csv
+./stories_to_csv 2440305 >> export.csv
+./stories_to_csv 2440663 >> export.csv
+./stories_to_csv 2438731 >> export.csv
+./stories_to_csv 2446381 >> export.csv

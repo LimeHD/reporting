@@ -1,0 +1,5 @@
+if [ -z "$1" ]; then
+  echo "Укажите project id первым параметром"
+  exit 1
+fi
+curl -s -X GET -H "X-TrackerToken: $TOKEN" "https://www.pivotaltracker.com/services/v5/projects/$1/stories"

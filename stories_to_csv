@@ -1,0 +1,6 @@
+if [ -z "$1" ]; then
+  echo "Укажите project id первым параметром"
+  exit 1
+fi
+
+./stories $1 | jq -r '.[] | [.created_at, .owned_by_id, .name, .description] | @csv'
