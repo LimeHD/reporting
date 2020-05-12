@@ -1,5 +1,3 @@
-# Install
+# Сформировать и отправчить отчёт
 
-> apt-get install jq
-
-./export_stories_as_csv
+> make
