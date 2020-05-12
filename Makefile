@@ -1,5 +1,3 @@
-MAIL=danil@brandymint.ru
-
 all: clean report.csv send
 
 clean:
