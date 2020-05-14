@@ -26,7 +26,8 @@ FILE='report.csv'
 puts "Скидываю отчёт в report.csv"
 
 require 'csv'
-CSV.open("report.csv", "w") do |csv|
+CSV.open("report.csv", "w", col_sep: ";") do |csv|
+  csv << ['Задача создана', 'Участники', 'Отметки', 'Название', 'Детали']
   PROJECTS.each do |project_id|
     get("https://www.pivotaltracker.com/services/v5/projects/#{project_id}/stories").
       map do |story|
