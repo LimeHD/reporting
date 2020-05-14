@@ -1,4 +1,4 @@
-all: clean report.csv send
+all: report send
 
 clean:
 	@rm -f *.csv *.xls
@@ -10,6 +10,8 @@ report.csv:
 report.xls:
 	@echo "Конвертирую в xls"
 	@ssconvert  --import-encoding=utf-8 report.csv report.xls 
+
+report: clean report.csv report.xls
 
 send:
 	@echo "Полный отчёт за все периоды" | \

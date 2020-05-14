@@ -31,7 +31,7 @@ CSV.open("report.csv", "w") do |csv|
   PROJECTS.each do |project_id|
     get("https://www.pivotaltracker.com/services/v5/projects/#{project_id}/stories").
       map do |story|
-      csv << [story['created_at'], MEMBERS[story['owned_by_id']], story['labels'], story['name'], story['description']]
+      csv << [story['created_at'], MEMBERS[story['owned_by_id']], story['labels'].map { |l| l['name'] }.join(','), story['name'], story['description']]
     end
   end
 end
