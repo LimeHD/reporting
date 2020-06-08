@@ -14,6 +14,6 @@ report.xls:
 report: clean report.csv report.xls
 
 send:
-	@echo "Полный отчёт за все периоды" | \
+	@echo "Отчёт за прошлый месяц" | \
 		mutt -s "Отчёт о проделанных и проделываемых работах в разработке" -a report.xls -- ${MAIL}
 	@echo "Отправлено на ${MAIL}"
