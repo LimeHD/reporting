@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 #
 require "http"
+require 'pry'
 
 TOKEN = ENV['TOKEN']
 ACCOUNT_ID = ENV['ACCOUNT_ID']
@@ -23,7 +24,8 @@ ATTRS = %w(created_at owned_by_id name description)
 
 FILE='report.csv'
 
-puts "Скидываю отчёт в report.csv"
+month = $ARGV[0] || DateTime.now.prev_month.strftime("%Y-%m")
+puts "Скидываю отчёт в report.csv по месяцу #{month}"
 
 require 'csv'
 CSV.open("report.csv", "w") do |csv|
@@ -31,7 +33,10 @@ CSV.open("report.csv", "w") do |csv|
   PROJECTS.each do |project_id|
     get("https://www.pivotaltracker.com/services/v5/projects/#{project_id}/stories").
       map do |story|
-      csv << [story['created_at'], MEMBERS[story['owned_by_id']], story['labels'].map { |l| l['name'] }.join(','), story['name'], story['description']]
+      times = [story['created_at'], story['updated_at'], story['accepted_at']].compact
+      if times.find { |time| time.include? month }
+        csv << [story['created_at'], MEMBERS[story['owned_by_id']], story['labels'].map { |l| l['name'] }.join(','), story['name'], story['description']]
+      end
     end
   end
 end
