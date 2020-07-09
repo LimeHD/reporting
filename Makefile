@@ -9,7 +9,7 @@ report.csv:
 
 report.xls:
 	@echo "Конвертирую в xls"
-	@ssconvert  --import-encoding=utf-8 report.csv report.xls 
+	@ssconvert --import-type=Gnumeric_stf:stf_csvtab --import-encoding=utf-8 report.csv report.xls 
 
 report: clean report.csv report.xls
 
